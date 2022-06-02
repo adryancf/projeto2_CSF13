@@ -1,0 +1,48 @@
+/*============================================================================*/
+/* CSF13 - 2022-1 - PROJETO 2                                                 */
+/*----------------------------------------------------------------------------*/
+/* Bogdan T. Nassu - btnassu@utfpr.edu.br                                     */
+/* Leyza E. B. Dorini - leyza@utfpr.edu.br                                    */
+/*============================================================================*/
+/**  */
+/*============================================================================*/
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "projeto2.h"
+
+void mudaGanho (double* dados, int n_amostras, double ganho)
+{
+    int i;
+    for(i=0; i<n_amostras; i++)
+        dados[i] *= ganho;
+
+}
+void simulaSubAmostragem (double* dados, int n_amostras, int n_constantes)
+{
+    //n_constantes -> quantas amostras vao ter o valor da primeira
+    //copiar o valor da primeira pras n_constantes seguintes...
+    //apos essas n_constantes, pega o proximo valor e replica mais n_constantes
+
+    //valor máximo n_amostras
+    for(i=0; i<n_amostras; i++)
+        for(j=0; j<n_constantes; j++) //replicar o valor da primeir
+            dados[j+1] = dados[0];
+
+}
+void estalos (double* dados, int n_amostras, int intervalo_max, double valor1)
+{
+
+}
+void removeEstalos (double* dados, int n_amostras)
+{
+
+}
+void geraOndaQuadrada (double* dados, int n_amostras, int taxa, double freq)
+{
+
+}
+void geraSenoide (double* dados, int n_amostras, int taxa, double freq, double fase)
+{
+
+}
