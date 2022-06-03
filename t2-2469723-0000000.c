@@ -24,11 +24,26 @@ void simulaSubAmostragem (double* dados, int n_amostras, int n_constantes)
     //copiar o valor da primeira pras n_constantes seguintes...
     //apos essas n_constantes, pega o proximo valor e replica mais n_constantes
 
-    //valor m�ximo n_amostras
-    for(i=0; i<n_amostras; i++)
-        for(j=0; j<n_constantes; j++) //replicar o valor da primeir
-            dados[j+1] = dados[0];
+     int valor_copia, i, contador = 0;
 
+    //VARIAVEL AUXILIAR
+    valor_copia = 0;
+
+    while(contador<n_amostras){
+        for(i=0; i<n_constantes; i++) //Repete n_constantes vezes
+        {
+            //Avança as posições da sequência do vetor.
+            //Atribui o valor do vetor inicial da sequência aos vetores das posições seguintes.
+            dados[i+valor_copia] = dados[valor_copia];
+            //Conta os vetores alterados
+            contador++;
+        }
+
+        //Avança n_constantes posições
+        valor_copia += (n_constantes);
+
+    }
+}
 }
 void estalos (double* dados, int n_amostras, int intervalo_max, double valor1)
 {
