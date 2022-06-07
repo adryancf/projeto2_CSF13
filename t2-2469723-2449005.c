@@ -112,5 +112,12 @@ void geraOndaQuadrada (double* dados, int n_amostras, int taxa, double freq)
 }
 void geraSenoide (double* dados, int n_amostras, int taxa, double freq, double fase)
 {
+    int i;
+    float periodo_seno;
 
+    periodo_seno = (2*TRAB_PI*freq)/taxa;
+
+    for(i=0; i<n_amostras; i++)
+        dados[i] = sin(periodo_seno*i + fase);
+                
 }
