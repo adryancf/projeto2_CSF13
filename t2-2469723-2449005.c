@@ -14,9 +14,14 @@
 void mudaGanho (double* dados, int n_amostras, double ganho)
 {
     int i;
-    for(i=0; i<n_amostras; i++)
-        dados[i] *= ganho;
-
+    if(ganho>0){
+        for(i=0; i<n_amostras; i++)
+            dados[i] *= ganho;
+    }        
+    else{                                 
+        for(i=0;i<n_amostras; i++)
+            dados[i]=0;
+    }
 }
 void simulaSubAmostragem (double* dados, int n_amostras, int n_constantes)
 {
@@ -44,15 +49,63 @@ void simulaSubAmostragem (double* dados, int n_amostras, int n_constantes)
 
     }
 }
+
+void estalos (double* dados, int n_amostras, int intervalo_max, double valor1){
+    int i,inter; //inter eh a posição dentro do intervalo entre 1 e intervalo_max
+
+    inter = (rand()%intervalo_max)+1; //somar 1 pra garantir inter>0
+
+    for(i=0; i<n_amostras; i++){
+        if(i==inter-1 && inter<n_amostras){ /*i==inter-1, já que i começa no 0
+                                              e inter, no 1*/
+            valor1*=-1;
+            dados[i] = valor1;
+            inter+=(rand()%(intervalo_max)+1);
+        }
+    }
 }
-void estalos (double* dados, int n_amostras, int intervalo_max, double valor1)
-{
+
+double medianaL3(float n1, float n2, float n3){ /*calcula a mediana de largura 3. Funcao criada por autor.*/
+    if (n1 < n2 && n1 < n3)
+    {
+        if (n2 < n3)
+            return n2;
+        else
+            return n3;
+    }
+    else if (n2 < n1 && n2 < n3)
+    {
+        if (n1 < n3)
+            return n1;
+        else
+            return n3;
+    }
+    else
+    {
+        if (n1 < n2)
+            return n1;
+        else
+            return n2;
+    }
 
 }
-void removeEstalos (double* dados, int n_amostras)
-{
 
+
+void removeEstalos (double* dados, int n_amostras){
+    int i;
+    double *copia; /*copia o vetor'dados'*/
+
+    copia = (double*) malloc(sizeof(double)*n_amostras);
+
+    for(i=0; i<n_amostras; i++){
+        copia[i]=dados[i];
+    }
+
+    for(i=1; i<n_amostras-2; i++){
+        dados [i] = medianaL3(copia[i-1], copia[i], copia[i+1]);
+    }
 }
+
 void geraOndaQuadrada (double* dados, int n_amostras, int taxa, double freq)
 {
 
