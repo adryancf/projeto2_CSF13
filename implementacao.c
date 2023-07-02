@@ -32,23 +32,23 @@ void simulaSubAmostragem (double* dados, int n_amostras, int n_constantes)
 
         for(i=0; i<n_constantes && amostras_alteradas<n_amostras; i++)
         {
-            dados[i+valor_copiado] = dados[valor_copiado]; //Atribui o valor do vetor inicial da sequência aos vetores das posições seguintes.
+            dados[i+valor_copiado] = dados[valor_copiado]; //Atribui o valor do vetor inicial da sequÃªncia aos vetores das posiÃ§Ãµes seguintes.
             amostras_alteradas++;
         }
 
-        valor_copiado += (n_constantes);//Garante que o vetor avançe n_constantes posições
+        valor_copiado += (n_constantes);//Garante que o vetor avanÃ§e n_constantes posiÃ§Ãµes
 
     }
 }
 
 void estalos (double* dados, int n_amostras, int intervalo_max, double valor1)
 {
-    int i,inter; //inter eh a posição dentro do intervalo entre 1 e intervalo_max
+    int i,inter; //inter eh a posiÃ§Ã£o dentro do intervalo entre 1 e intervalo_max
 
     inter = (rand()%intervalo_max)+1; //somar 1 pra garantir inter>0
 
     for(i=0; i<n_amostras; i++){
-        if(i==inter-1 && inter<n_amostras){ /*i==inter-1, já que i começa no 0
+        if(i==inter-1 && inter<n_amostras){ /*i==inter-1, jÃ¡ que i comeÃ§a no 0
                                               e inter, no 1*/
             valor1*=-1;
             dados[i] = valor1;
@@ -90,9 +90,9 @@ void geraOndaQuadrada (double* dados, int n_amostras, int taxa, double freq)
             contador++;
         }
 
-        posicao += (int)v_ciclo; //Garante que o vetor avançe corretamente
+        posicao += (int)v_ciclo; //Garante que o vetor avanÃ§e corretamente
 
-        erro = v_ciclo - (int)v_ciclo; //Atualização do erro após o ciclo
+        erro = v_ciclo - (int)v_ciclo; //AtualizaÃ§Ã£o do erro apÃ³s o ciclo
         v_ciclo = meio_periodo + erro;
 
         valor *= -1; //Altera entre -1 e 1
@@ -106,9 +106,9 @@ void geraSenoide (double* dados, int n_amostras, int taxa, double freq, double f
     int i;
     float periodo_seno;
 
-    //ADCIONAR ERRO!(IGUAL ERRO DA QUADRÁTICA)
+    //ADCIONAR ERRO!(IGUAL ERRO DA QUADRÃTICA)
 
-    periodo_seno = (2*TRAB_PI*freq)/taxa; //Fórmula obtida igualando a fórmula geral do periódo a (taxa/freq) e isolando o p -> 2pi/p = taxa/freq
+    periodo_seno = (2*TRAB_PI*freq)/taxa; //FÃ³rmula obtida igualando a fÃ³rmula geral do periÃ³do a (taxa/freq) e isolando o p -> 2pi/p = taxa/freq
 
     for(i=0; i<n_amostras; i++)
     {
@@ -119,7 +119,7 @@ void geraSenoide (double* dados, int n_amostras, int taxa, double freq, double f
 
 
 
-/* FUNÇOES AUXILIARES */
+/* FUNÃ‡OES AUXILIARES */
 
 
 double medianaL3(double n1, double n2, double n3) /*calcula a mediana de largura 3. Funcao criada por autor.*/
